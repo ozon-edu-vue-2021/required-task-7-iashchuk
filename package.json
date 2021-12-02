@@ -1,0 +1,23 @@
+{
+  "name": "route-contacts-app",
+  "version": "1.0.0",
+  "description": "Route 256. Required Task",
+  "author": "Vitalii Iashchuk",
+  "license": "ISC",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel src/index.html --open",
+    "build": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "on-change": "^4.0.0",
+    "parcel-bundler": "^1.6.1",
+    "reset.css": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0"
+  },
+  "resolutions": {
+    "@babel/preset-env": "7.13.8"
+  }
+}

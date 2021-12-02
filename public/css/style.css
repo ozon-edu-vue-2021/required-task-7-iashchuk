@@ -1,0 +1,149 @@
+@import "reset.css";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica", Arial, sans-serif;
+  background: #f9f9f9;
+}
+
+.container {
+  width: 320px;
+  height: 100vh;
+  background: #ffffff;
+  position: relative;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.list-view {
+  background: #ffffff;
+ 
+
+}
+
+.details-view {
+  background: #ffffff;
+}
+
+.avatar {
+  height: 70px;
+}
+
+.avatar:hover {
+  background: #efefef;
+  cursor: pointer;
+}
+
+.avatar:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: url("../images/default-img.png");
+  background-size: 100%;
+  margin: 0 15px;
+}
+
+.details__avatar {
+  margin-left: 40px;
+}
+
+.details__avatar:hover {
+  pointer-events: none;
+  background: none;
+}
+
+.details__background {
+  display: flex;
+  align-items: center;
+}
+
+.details__name {
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.persons__item {
+  height: 70px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.persons__item:hover {
+  background: #efefef;
+  cursor: pointer;
+}
+
+.persons__item:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: url("../images/default-img.png");
+  background-size: 100%;
+  margin: 10px 15px;
+}
+
+.persons__item strong {
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+}
+
+
+.background {
+  position: relative;
+  height: 90px;
+  width: 100%;
+  background: url("../images/background-active.jpg");
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background: url("../images/back-icon.png");
+  background-size: 100%;
+  border: 0;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.arrow:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.contacts__item {
+  height: 70px;
+  line-height: 70px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.contacts__item_title {
+  margin-left: 8px;
+  font-weight: bold;
+  font-size: larger;
+}
+
+
+.contacts__icon {
+  font-size: 1.2rem;
+  margin: 0 15px;
+}
+
+
+.notfound__text {
+  padding: 30px;
+  text-align: center;
+}
