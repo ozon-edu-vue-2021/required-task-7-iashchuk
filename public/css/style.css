@@ -22,8 +22,6 @@ body {
 
 .list-view {
   background: #ffffff;
- 
-
 }
 
 .details-view {
@@ -98,7 +96,6 @@ body {
   font-weight: normal;
 }
 
-
 .background {
   position: relative;
   height: 90px;
@@ -136,12 +133,10 @@ body {
   font-size: larger;
 }
 
-
 .contacts__icon {
   font-size: 1.2rem;
   margin: 0 15px;
 }
-
 
 .notfound__text {
   padding: 30px;
