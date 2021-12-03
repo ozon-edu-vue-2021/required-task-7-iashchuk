@@ -35,14 +35,14 @@ const renderView = ({
     </div>
 `;
 
-export const renderDetailsView = ({ person, contactsById, rankedPersonById }) => {
+export const renderDetailsView = ({ person, contactsById, rankedPersonsByFriends }) => {
   const container = document.querySelector('.container');
 
   const renderPerson = getRenderPerson(contactsById);
 
   const friends = person.friends.slice(0, MAX_PERSON_IN_SUBLIST).map(renderPerson);
   const notFriends = person.notFriends.slice(0, MAX_PERSON_IN_SUBLIST).map(renderPerson);
-  const popular = rankedPersonById.slice(0, MAX_PERSON_IN_SUBLIST).map(renderPerson);
+  const popular = rankedPersonsByFriends.slice(0, MAX_PERSON_IN_SUBLIST).map(renderPerson);
 
   container.innerHTML = renderView({
     name: person.name, friends, notFriends, popular,

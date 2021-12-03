@@ -10,9 +10,9 @@ const repository = new Repository(data);
 const initialState = {
   page: PAGES.LIST,
   currentPerson: null,
-  contacts: repository.getContactList(),
-  contactsById: repository.getContactsById(),
-  rankedPersonById: repository.getRankedPersonByIds(),
+  contacts: repository.contactList,
+  contactsById: repository.contactsById,
+  rankedPersonsByFriends: repository.rankedPersonsByFriends,
 };
 
 const state = watcher(initialState);
