@@ -17,7 +17,7 @@ export default (state) => {
   }
 
   if (page === PAGES.DETAILS) {
-    const person = state.contactsById[state.currentPerson];
+    const person = state.contactsDictionary[state.currentPersonId];
 
     if (person) {
       renderDetailsView({ ...state, person });

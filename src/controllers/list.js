@@ -5,7 +5,7 @@ const handlePersonClick = (state) => (evt) => {
     return;
   }
 
-  state.currentPerson = Number(evt.target.dataset.id);
+  state.currentPersonId = Number(evt.target.dataset.id);
   state.page = PAGES.DETAILS;
 };
 

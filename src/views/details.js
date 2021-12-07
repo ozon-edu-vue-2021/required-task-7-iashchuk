@@ -1,7 +1,5 @@
-import { MAX_PERSON_IN_SUBLIST } from '../constants';
-
-const getRenderPerson = (contacts) => (personId) => {
-  const value = contacts[personId];
+const getRenderPerson = (contactsDictionary) => (personId) => {
+  const value = contactsDictionary[personId];
 
   if (!value) {
     return '';
@@ -35,14 +33,13 @@ const renderView = ({
     </div>
 `;
 
-export const renderDetailsView = ({ person, contactsById, rankedPersonsByFriends }) => {
+export const renderDetailsView = ({ person, contactsDictionary, rankedPersonsByFriends }) => {
   const container = document.querySelector('.container');
 
-  const renderPerson = getRenderPerson(contactsById);
-
-  const friends = person.friends.slice(0, MAX_PERSON_IN_SUBLIST).map(renderPerson);
-  const notFriends = person.notFriends.slice(0, MAX_PERSON_IN_SUBLIST).map(renderPerson);
-  const popular = rankedPersonsByFriends.slice(0, MAX_PERSON_IN_SUBLIST).map(renderPerson);
+  const renderPerson = getRenderPerson(contactsDictionary);
+  const friends = person.friends.map(renderPerson);
+  const notFriends = person.notFriends.map(renderPerson);
+  const popular = rankedPersonsByFriends.map(renderPerson);
 
   container.innerHTML = renderView({
     name: person.name, friends, notFriends, popular,

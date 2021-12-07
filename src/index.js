@@ -1,18 +1,21 @@
 import data from '../public/data.json';
 
-import { PAGES } from './constants';
+import { MAX_PERSON_IN_SUBLIST, PAGES } from './constants';
+
 import { Repository } from './repository';
 import router from './router';
 import watcher from './watcher';
 
 const repository = new Repository(data);
 
+const { contacts, contactsDictionary, rankedPersonsByFriends } = repository.getContactsData(MAX_PERSON_IN_SUBLIST)
+
 const initialState = {
   page: PAGES.LIST,
-  currentPerson: null,
-  contacts: repository.contactList,
-  contactsById: repository.contactsById,
-  rankedPersonsByFriends: repository.rankedPersonsByFriends,
+  currentPersonId: null,
+  contacts,
+  contactsDictionary,
+  rankedPersonsByFriends,
 };
 
 const state = watcher(initialState);

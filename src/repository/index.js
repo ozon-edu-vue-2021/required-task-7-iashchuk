@@ -1,33 +1,23 @@
 export class Repository {
   constructor(data) {
-    this.data = data;
+    this._data = data;
   }
 
-  get personsIds() {
-    return this.data.map((person) => person.id);
+  _getNotFriends(personId, count) {
+    const result = [];
+
+    for (const person of this._data) {
+      const notFriends = person.friends.filter(item => item !== personId);
+      result.push(...notFriends)
+
+      if (result.length >= count) {
+        return result.length > count ? result.slice(0, count) : result;
+      }
+    };
   }
 
-  get friendsIds() {
-    return this.data.reduce((acc, { friends }) => {
-      acc.push(...friends);
-      return acc;
-    }, []);
-  }
-
-  get contactList() {
-    return this.data;
-  }
-
-  get contactsById() {
-    return this.data.reduce((acc, person) => {
-      acc[person.id] = { ...person, notFriends: this.getNotFriends(person) };
-
-      return acc;
-    }, {});
-  }
-
-  get rankedPersonsByFriends() {
-    const groupedByRepeat = this.friendsIds.reduce((acc, id) => {
+  _getRankedPersonsByFriends = (contactsDictionary, friendsIds, count) => {
+    const groupedByRepeat = friendsIds.reduce((acc, id) => {
       acc[id] = (acc[id] || 0) + 1;
       return acc;
     }, {});
@@ -40,20 +30,34 @@ export class Repository {
           return compare;
         }
 
-        const firstName = this.getContactById(firstId)?.name || '';
-        const secondName = this.getContactById(secondId)?.name || '';
+        const firstName = contactsDictionary[firstId]?.name || '';
+        const secondName = contactsDictionary[secondId]?.name || '';
 
         return firstName.localeCompare(secondName);
 
       })
+      .slice(0, count)
       .map(([id]) => id);
   }
 
-  getNotFriends(person) {
-    return this.personsIds.filter((id) => !person.friends.includes(id));
+  getContactsData(countInSublist) {
+    const friendsIds = [];
+
+    const contactsDictionary = this._data.reduce((acc, person) => {
+      acc[person.id] = {
+        ...person, notFriends: this._getNotFriends(person.id, countInSublist)
+      };
+
+      friendsIds.push(...person.friends)
+
+      return acc;
+    }, {});
+
+    return {
+      contacts: this._data,
+      contactsDictionary,
+      rankedPersonsByFriends: this._getRankedPersonsByFriends(contactsDictionary, friendsIds, countInSublist)
+    }
   }
 
-  getContactById(id) {
-    return this.contactsById[id]
-  }
 }
