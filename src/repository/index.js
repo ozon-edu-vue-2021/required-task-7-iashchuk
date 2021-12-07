@@ -16,7 +16,7 @@ export class Repository {
     };
   }
 
-  _getRankedPersonsByFriends = (contactsDictionary, friendsIds, count) => {
+  _getRankedPersonsByFriends(contactsDictionary, friendsIds, count) {
     const groupedByRepeat = friendsIds.reduce((acc, id) => {
       acc[id] = (acc[id] || 0) + 1;
       return acc;
@@ -59,5 +59,4 @@ export class Repository {
       rankedPersonsByFriends: this._getRankedPersonsByFriends(contactsDictionary, friendsIds, countInSublist)
     }
   }
-
 }
