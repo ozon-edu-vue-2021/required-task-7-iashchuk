@@ -81,4 +81,4 @@ module.exports=[{id:1,name:"Петя",friends:[10,2,6]},{id:2,name:"Вася",fr
 },{}],"Focm":[function(require,module,exports) {
 "use strict";var e=s(require("../public/data.json")),r=require("./constants"),t=s(require("./router")),n=s(require("./watcher")),a=require("./repository");function s(e){return e&&e.__esModule?e:{default:e}}var o=new a.Repository(e.default),c=o.getContactsData(r.MAX_PERSON_IN_SUBLIST),u=c.contacts,i=c.contactsDictionary,d=c.rankedPersonsByFriends,l={page:r.PAGES.LIST,currentPersonId:null,contacts:u,contactsDictionary:i,rankedPersonsByFriends:d},y=(0,n.default)(l);(0,t.default)(y);
 },{"../public/data.json":"Sm09","./constants":"Zvlv","./router":"hPM2","./watcher":"S9a2","./repository":"nc8Y"}]},{},["Focm"], null)
-//# sourceMappingURL=/src.60f61f6f.js.map
+//# sourceMappingURL=/contacts-app/src.60f61f6f.js.map
