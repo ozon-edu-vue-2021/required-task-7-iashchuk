@@ -1,0 +1,32 @@
+name: Deploy
+
+on:
+  push:
+    branches: 
+      - master
+      - feature
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - run: yarn
+      - run: yarn build
+
+      - name: Set user
+        run: |
+         git config user.email "iashchuk@outlook.com"
+         git config user.name "Vitalii Iashchuk"
+
+      - name: Deploy with gh-pages
+        run: |
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
